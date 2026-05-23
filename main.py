@@ -54,7 +54,7 @@ def setup_logger():
     return logger
 
 logger = setup_logger()
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot("8688287989:AAGP1_V7Mb__Qniv2C2s-z2Nbp4iwm3Z_hY")
 db_lock = threading.Lock()
 
 # =================================================================
