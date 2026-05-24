@@ -77,18 +77,19 @@ def load_database():
                 "list_text": ""
             }
         }
-        # Заполняем структуру клубами
-        for c_name, owner_tag in CLUBS_REGISTRY.items():
+        # Заполняем структуру клубами (ИСПРАВЛЕНО ДЛЯ НОВОГО ФОРМАТА)
+        for c_name, club_data in CLUBS_REGISTRY.items():
             initial_structure["clubs"][c_name] = {
-                "owner": owner_tag.lower() if owner_tag else None,
+                "owner_username": club_data["username"].lower() if club_data["username"] else None,
+                "owner_id": club_data["owner_id"],
                 "deputy": None
             }
         
-        # Генерируем текст списка для вывода
+        # Генерируем текст списка для вывода (ИСПРАВЛЕНО ДЛЯ НОВОГО ФОРМАТА)
         generated_list = "🏆 **СПИСОК ВСЕХ КЛУБОВ**\n\n"
-        for name, owner in CLUBS_REGISTRY.items():
-            status = f"@{owner}" if owner else "❓ Свободно"
-            generated_list += f"📍 {name} — {status}\n"
+        for c_name, club_data in CLUBS_REGISTRY.items():
+            status = f"@{club_data['username']}" if club_data["username"] else "❓ Свободно"
+            generated_list += f"📍 {c_name} — {status}\n"
         initial_structure["config"]["list_text"] = generated_list
         
         with open(DATABASE_PATH, "w", encoding="utf-8") as f:
@@ -115,21 +116,20 @@ def check_is_admin(username):
     data = load_database()
     return (username or "").lower() in data["admins"]
 
-def find_club_by_manager(username):
-    """Определяет клуб, в котором пользователь является Владельцем или Замом."""
+def find_club_by_manager(user_id, username):
+    """Определяет клуб, в котором пользователь является Владельцем (по ID) или Замом (по юзернейму)."""
     data = load_database()
     tag = (username or "").lower()
     for club_name, info in data["clubs"].items():
-        if info["owner"] == tag or info["deputy"] == tag:
+        if user_id in info.get("owner_id", []) or info.get("deputy") == tag:
             return club_name
     return None
 
-def find_club_by_owner_only(username):
-    """Определяет клуб, в котором пользователь является только Главным Владельцем."""
+def find_club_by_owner_only(user_id):
+    """Определяет клуб, в котором пользователь является только Главным Владельцем (по ID)."""
     data = load_database()
-    tag = (username or "").lower()
     for club_name, info in data["clubs"].items():
-        if info["owner"] == tag:
+        if user_id in info.get("owner_id", []):
             return club_name
     return None
 
@@ -210,13 +210,13 @@ def get_main_keyboard(user_id, username):
     # Основной функционал
     markup.add("Свободный агент 🆓", "Свой текст 📝")
     
-    # Функции управления клубом
-    managed_club = find_club_by_manager(un_low)
+    # Функции управления клубом (ИСПРАВЛЕНО)
+    managed_club = find_club_by_manager(user_id, un_low)
     if managed_club or check_is_admin(un_low):
         markup.add("Предложить трансфер 🤝", "Опубликовать набор 📢")
     
-    # Функции только для Главных Владельцев
-    if find_club_by_owner_only(un_low):
+    # Функции только для Главных Владельцев (ИСПРАВЛЕНО)
+    if find_club_by_owner_only(user_id):
         markup.add("Добавить зама 👤+", "Удалить зама 👤-")
 
     # Общие кнопки
@@ -481,7 +481,6 @@ def admin_step_manage_admins(message, action_type):
             data["admins"].remove(tag)
             save_database(data)
             bot.send_message(message.chat.id, f"✅ @{tag} лишен прав администратора.")
-
 # =================================================================
 # 8. ЯДРО БОТА (ОБРАБОТКА КОМАНД И СООБЩЕНИЙ)
 # =================================================================
