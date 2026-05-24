@@ -36,7 +36,7 @@ DATABASE_PATH = "tm_ultimate_system_v12.json"
 CLUBS_REGISTRY = {
     "Chelsea 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "Kazrzz01", "owner_id": [8538078406]},
     "Arsenal 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "strongerddd", "owner_id": [6641683745]},
-    "Manchester United 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": None, "owner_id": []},
+    "Manchester United 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "@hushke1", "owner_id": [8028889794]},
     "Manchester City 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": None, "owner_id": []},
     "Inter Milan 🇮🇹": {"username": "Banditdontrealme", "owner_id": [7908040352]},
     "Napoli 🇮🇹": {"username": None, "owner_id": []},
