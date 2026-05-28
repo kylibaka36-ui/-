@@ -36,29 +36,21 @@ DATABASE_PATH = "tm_ultimate_system_v12.json"
 
 # Актуальний реєстр клубів (оновлений список)
 CLUBS_REGISTRY = {
-    "Chelsea 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "Kazrzz01", "owner_id": [8538078406]},
-    "Arsenal 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "strongerddd", "owner_id": [6641683745]},
-    "Manchester United 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "@hushke1", "owner_id": [8028889794]},
-    "Manchester City 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": None, "owner_id": []},
+    # Офіційні ТМ клуби
+    "Arsenal 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "strongerdds", "owner_id": [6641683745]},
+    "Manchester United 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "hushke1", "owner_id": [8028889794]},
     "Inter Milan 🇮🇹": {"username": "Banditdontrealme", "owner_id": [7908040352]},
     "Napoli 🇮🇹": {"username": None, "owner_id": []},
-    "Juventus 🇮🇹": {"username": "Topor_12", "owner_id": [8087187813]},
-    "Milan 🇮🇹": {"username": None, "owner_id": []},
     "Real Madrid 🇪🇸": {"username": "exoqwz", "owner_id": [8545364549]},
-    "Barcelona 🇪🇸": {"username": "Kiyora0408", "owner_id": [5330017958]},
-    "Bayern Munich 🇩🇪": {"username": None, "owner_id": []},
-    "Borussia Dortmund 🇩🇪": {"username": None, "owner_id": []},
-    "Benfica 🇵🇹": {"username": None, "owner_id": []},
-    "Porto 🇵🇹": {"username": "Nazikrrk", "owner_id": [5845609895]},
-    "Sporting 🇵🇹": {"username": None, "owner_id": []},
+    "Barcelona 🇪🇸": {"username": None, "owner_id": [5330017958]},
+    "Bayern Munich 🇩🇪": {"username": "brilizu", "owner_id": [8239279234]},
     "Monaco 🇫🇷": {"username": None, "owner_id": []},
     "PSG 🇫🇷": {"username": "verybigsun / X_s799", "owner_id": [7908057052, 8975183392]},
     
-    # Кастомні клуби
-    "Imperiall 🇧🇾": {"username": "kiril777_14 / Fot_10_win_goal", "owner_id": [7677647131, 8113380110]},
-    "Sochi 🇷🇺": {"username": "AMOLIKERGOB", "owner_id": [8452876078]},
-    "Kalev 🇪🇪": {"username": "Miha10021", "owner_id": [8461055593]},
-    "Sunderland 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "bldyywar", "owner_id": [7909291812]}
+    # Кастомні ТМ клуби
+    "Imperiall 🇧🇾": {"username": None, "owner_id": []},
+    "Chelsea 🏴󠁧󠁢󠁥󠁮󠁧󠁿": {"username": "Kazrzz01", "owner_id": [8538078406]},
+    "Juventus 🇮🇹": {"username": "Zakat_0_0", "owner_id": [8087187813]}
 }
 
 # =================================================================
